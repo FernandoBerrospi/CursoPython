@@ -327,7 +327,6 @@ print('Matriz Creada:',list)
 
 """
 APLICATIVO II
-"""
 #PREPARANDO EL CANVAS
 large = 600
 high = large
@@ -351,9 +350,9 @@ def callback(event):
     y_inic = int(event.y/interval)*interval
     canvas.create_rectangle(x_inic,y_inic,x_inic+interval,y_inic+interval,fill='blue')
 canvas.bind("<Button-1>", callback)
+"""
 
-print('Hola Munedo')
-
+print("Cambio de Prueba")
 
 
 
