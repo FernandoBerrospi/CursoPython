@@ -352,6 +352,8 @@ def callback(event):
     canvas.create_rectangle(x_inic,y_inic,x_inic+interval,y_inic+interval,fill='blue')
 canvas.bind("<Button-1>", callback)
 
+print('Hola Munedo')
+
 
 
 
