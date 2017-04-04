@@ -372,7 +372,6 @@ print(area_triangle(base,height))
 
 """
 FUNCIONES II
-"""
 n = 8
 list = []
 for i in range(n):
@@ -391,8 +390,41 @@ def sort(list):
                 list[i],list[q] = list[q],list[i]
 sort(list)
 print('Lista Ordenada:',list)
+"""
 
+"""
+FUNCIONES III
+def factorial(n):
+    temp = 1
+    for i in range(1,n+1):
+        temp = temp * i
+    return temp
+def combinatorial(n,m):
+    return factorial(n)/(factorial(m)*factorial(n-m))
+number = 3
+m = 1
+print("El factorial de",number,':',factorial(number))
+print("El numero de combinaciones de",number,'en',m,'es:',combinatorial(number,m))
+"""
 
+"""
+RECURSIVIDAD
+"""
+number = 8
+def factorial(n,acu):
+    #print('N: ',n)
+    if n-1 != 0:
+        return n*factorial(n-1,acu)
+    return acu
+print('El Factorial de',number,'es',factorial(number,1))
 
-
-    
+def fibonaci(n,i,list):
+    if i != n+1:
+        if i<=2:
+            list.append(1)
+        else:
+            list.append(list[i-2]+list[i-3])
+        fibonaci(n,i+1,list)
+    return list   
+print(fibonaci(number,1,[]))
+        
