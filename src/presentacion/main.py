@@ -352,9 +352,44 @@ def callback(event):
 canvas.bind("<Button-1>", callback)
 """
 
-print("Cambio de Prueba")
+"""
+FUNCIONES I
+def raiz(x):
+    try:
+        return sqrt(x)
+    except:
+        return "Error"
+
+print(raiz(float(input('Digite el numero que desea la raiz '))))
+
+def area_triangle(base,height):
+    return base*height/2
+
+base = float(input('Digite la Base del Triangulo '))
+height = float(input('Digite la altura del Triangulo '))
+print(area_triangle(base,height))
+"""
+
+"""
+FUNCIONES II
+"""
+n = 8
+list = []
+for i in range(n):
+    list.append(randint(0,10))
+print('Primera Lista:',list)
+def duplicate(list):
+    for i in range(len(list)):
+        list[i] = list[i]*2
+
+duplicate(list)
+print("Lista duplicada:",list)
+def sort(list):
+    for i in range(len(list)):
+        for q in range(len(list)):
+            if list[i]<list[q]:
+                list[i],list[q] = list[q],list[i]
+sort(list)
+print('Lista Ordenada:',list)
 
 
-
-
-    
