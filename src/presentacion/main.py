@@ -409,7 +409,6 @@ print("El numero de combinaciones de",number,'en',m,'es:',combinatorial(number,m
 
 """
 RECURSIVIDAD
-"""
 number = 8
 def factorial(n,acu):
     #print('N: ',n)
@@ -427,4 +426,77 @@ def fibonaci(n,i,list):
         fibonaci(n,i+1,list)
     return list   
 print(fibonaci(number,1,[]))
+"""
+#CONSTANTES
+width = 500
+height = width
+background_color = '#154360'
+line_color = '#D5DBDB'
+
+#VARIABLES
+xi,yi = 0,height/2
+xf,yf = width,height/2
+x1,y1 = 223,100
+x2,y2 = 75,354
+x3,y3 = 377,354
+n = 5
+
+#VENTANA DE APLICACION
+window = Tk()
+window.geometry(str(width)+'x'+str(height))
+window.title('Graficos Fractales')
+window.iconbitmap('favicon.ico')
+window.resizable(width = False,height = False)
+
+#CANVAS
+canvas = Canvas(window,width = width,height = height,bg = background_color)
+canvas.pack()
+
+#CREAR GRAFICO
+def create_grafic_VonKoch(xi,yi,xf,yf,n):
+    if  n!=0:
+        x1 = xi + (xf - xi)/3
+        y1 = yi + (yf - yi)/3
         
+        x3 = xf - (xf - xi)/3
+        y3 = yf - (yf - yi)/3
+        
+        x2 = (x1+x3)*cos(pi/3) - (y3-y1)*sin(pi/3)
+        y2 = (y1+y3)*cos(pi/3) + (x3-x1)*sin(pi/3)
+
+        create_grafic_VonKoch(xi,yi,x1,y1,n-1)
+        create_grafic_VonKoch(x1,y1,x2,y2,n-1)
+        create_grafic_VonKoch(x2,y2,x3,y3,n-1)
+        create_grafic_VonKoch(x3,y3,xf,yf,n-1)
+        
+    else: 
+        canvas.create_line(xi,height - yi,xf,height - yf,fill=line_color)
+
+def create_copo_VonKoch(x1,y1,x2,y2,x3,y3,n):
+    create_grafic_VonKoch(x1,y1,x2,y2,n)
+    create_grafic_VonKoch(x2,y2,x3,y3,n)
+    create_grafic_VonKoch(x3,y3,x1,y1,n)
+
+
+#create_grafic_VonKoch(xi,yi,xf,yf,n)
+create_copo_VonKoch(x1,y1,x2,y2,x3,y3,n)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
