@@ -427,11 +427,20 @@ def fibonaci(n,i,list):
     return list   
 print(fibonaci(number,1,[]))
 """
+
+"""
+GRAFICOS FRACTALES Y MODULOS
+"""
+
+#MODULOS
+from modules.numbers import *
+
 #CONSTANTES
 width = 500
 height = width
 background_color = '#154360'
-line_color = '#D5DBDB'
+line_color = '#E86D9D'
+increase_color = 10
 
 #VARIABLES
 xi,yi = 0,height/2
@@ -452,8 +461,9 @@ window.resizable(width = False,height = False)
 canvas = Canvas(window,width = width,height = height,bg = background_color)
 canvas.pack()
 
+
 #CREAR GRAFICO
-def create_grafic_VonKoch(xi,yi,xf,yf,n):
+def create_grafic_VonKoch(xi,yi,xf,yf,n,line_color):
     if  n!=0:
         x1 = xi + (xf - xi)/3
         y1 = yi + (yf - yi)/3
@@ -464,24 +474,24 @@ def create_grafic_VonKoch(xi,yi,xf,yf,n):
         x2 = (x1+x3)*cos(pi/3) - (y3-y1)*sin(pi/3)
         y2 = (y1+y3)*cos(pi/3) + (x3-x1)*sin(pi/3)
 
-        create_grafic_VonKoch(xi,yi,x1,y1,n-1)
-        create_grafic_VonKoch(x1,y1,x2,y2,n-1)
-        create_grafic_VonKoch(x2,y2,x3,y3,n-1)
-        create_grafic_VonKoch(x3,y3,xf,yf,n-1)
+        create_grafic_VonKoch(xi,yi,x1,y1,n-1,increase_hexa_color(line_color,increase_color))
+        create_grafic_VonKoch(x1,y1,x2,y2,n-1,increase_hexa_color(line_color,increase_color))
+        create_grafic_VonKoch(x2,y2,x3,y3,n-1,increase_hexa_color(line_color,increase_color))
+        create_grafic_VonKoch(x3,y3,xf,yf,n-1,increase_hexa_color(line_color,increase_color))
         
     else: 
         canvas.create_line(xi,height - yi,xf,height - yf,fill=line_color)
 
-def create_copo_VonKoch(x1,y1,x2,y2,x3,y3,n):
-    create_grafic_VonKoch(x1,y1,x2,y2,n)
-    create_grafic_VonKoch(x2,y2,x3,y3,n)
-    create_grafic_VonKoch(x3,y3,x1,y1,n)
+def create_copo_VonKoch(x1,y1,x2,y2,x3,y3,n,line_color):
+    create_grafic_VonKoch(x1,y1,x2,y2,n,increase_hexa_color(line_color,increase_color))
+    create_grafic_VonKoch(x2,y2,x3,y3,n,increase_hexa_color(line_color,increase_color))
+    create_grafic_VonKoch(x3,y3,x1,y1,n,increase_hexa_color(line_color,increase_color))
 
 
-#create_grafic_VonKoch(xi,yi,xf,yf,n)
-create_copo_VonKoch(x1,y1,x2,y2,x3,y3,n)
+#create_grafic_VonKoch(xi,yi,xf,yf,n,line_color)
+create_copo_VonKoch(x1,y1,x2,y2,x3,y3,n,line_color)
 
-
+mainloop()
 
 
 
