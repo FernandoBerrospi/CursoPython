@@ -5,6 +5,7 @@ __date__ = "$30/03/2017 06:07:03 PM$"
 from random import *
 from math import *
 from tkinter import *
+from modules.numbers import *
 """
 FUNCIONES PREDEFINIDAS
 x= 'a'
@@ -430,10 +431,9 @@ print(fibonaci(number,1,[]))
 
 """
 GRAFICOS FRACTALES Y MODULOS
-"""
 
 #MODULOS
-from modules.numbers import *
+#from modules.numbers import * #IMPORTADO AL INICIO
 
 #CONSTANTES
 width = 500
@@ -490,8 +490,53 @@ def create_copo_VonKoch(x1,y1,x2,y2,x3,y3,n,line_color):
 
 #create_grafic_VonKoch(xi,yi,xf,yf,n,line_color)
 create_copo_VonKoch(x1,y1,x2,y2,x3,y3,n,line_color)
-
 mainloop()
+"""
+
+"""
+CLASES
+     
+class Person(object):
+    age_limit = 18
+    def __init__(self,name,surname,age):
+        self.name = name
+        self.surname = surname
+        self.age = age
+    
+    def is_higher_age(self):
+        if self.age > Person.age_limit:
+            return True
+        return False
+    
+    def to_string(self):
+        return 'Nombre: ' + self.name + '\nApellido: ' + self.surname + '\nEdad: ' + str(self.age) + '\n'
+    
+    def clone(self):
+        return Person(self.name,self.surname,self.age)
+    
+person_1 = Person('Fernando','Berrospi',20)
+person_2 = Person('Luis','Gamboa',20)
+
+#print(person_1.to_string())
+#print(person_2.is_higher_age())
+
+##VARIABLES DE CLASE
+#person_1.age_limit = 19 #Cuando se modifica una 'variable de clase' es como si pasara a ser de instancia
+#person_2.age_limit = 21
+#print(person_1.age_limit,person_2.age_limit,Person.age_limit)
+
+##CLONACION
+person_3 = person_1.clone()
+print(person_1.to_string())
+person_3.name = 'Juan'
+print(person_3.to_string())
+print(person_1.to_string())
+"""   
+
+"""
+FICHEROS
+"""
+
 
 
 
