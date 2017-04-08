@@ -6,6 +6,9 @@ from random import *
 from math import *
 from tkinter import *
 from modules.numbers import *
+from urllib.request import *
+
+import os 
 """
 FUNCIONES PREDEFINIDAS
 x= 'a'
@@ -535,7 +538,68 @@ print(person_1.to_string())
 
 """
 FICHEROS
+
+##LEER UN ARCHIVO 1
+file = open('..//files//index.html','r')
+for line in file:
+    #print(line)
+    break
+    
+##LEER UN ARCHIVO 2
+file = open('..//files//index.html','r')
+line = file.readline()
+while(line != ''):
+    #print(line)
+    line = file.readline()
+
+##LEER UN ARCHIVO 3
+file = open('..//files//index.html','r')
+characters = 5
+char = file.read(characters)
+while(char != ''):
+    #print(char)
+    char = file.read(characters)
+
+##LEER UN ARCHIVO 4
+file = open('..//files//index.html','r')
+#print(file.readlines()) #SIN SALTOS DE LINEA
+
+##LEER UN ARCHIVO 5
+file = open('..//files//index.html','r')
+#print(file.read())
+
+##LEER UNA PAGINA WEB
+file = urlopen('http://www.noteplus.esy.es/')
+#print(file.read())
 """
+##ESCRIBIR EN UN FICHERO
+def content_card():
+    file = open('..//files//index.html','r')
+    lines = file.read()
+    file.close()
+    return lines
+
+def create_card(name,title,content):
+    name = name + '.html'
+    lines = content_card()
+    lines = lines.replace('{{title}}',title)
+    lines = lines.replace('{{content}}',content)
+    
+    if( not os.path.exists('..//cards') ):
+        os.mkdir('..//cards')
+    
+    file = open('..//cards//'+name,'w')
+    file.write(lines)
+    file.close()  
+    print('Tarjeta Creada Correctamente')
+
+name = input('Nombre de la Tarjeta: ')
+title = input('Titulo de la Tarjeta: ')
+content = input('Contenido de la Trajeta: ')
+create_card(name,title,content)
+
+
+
 
 
 
